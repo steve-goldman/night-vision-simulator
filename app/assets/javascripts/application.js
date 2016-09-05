@@ -16,7 +16,9 @@
 //= require slider_watcher
 //= parameters
 //= require torch
+//= torch_validator
 //= torch_builder
+//= valid_torch_builder
 //= require torch_manager
 //= require initializer
 //= require_tree .
