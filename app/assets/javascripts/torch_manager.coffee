@@ -6,7 +6,7 @@ class @TorchManager
 
   setTorchCount: (torchCount) =>
     while @torches.length > torchCount
-      @torches.pop().turnOff()
+      @torches.pop().close()
     while @torches.length < torchCount
       @torches.push @validTorchBuilder.buildValid()
 
@@ -14,7 +14,7 @@ class @TorchManager
     this._startCycle()
 
   _startCycle: =>
-    console.log 'starting cycle'
+    console.log 'starting cycle with ' + @torches.length
     for torch in @torches
       this._possiblyTurnOnTorch torch
 

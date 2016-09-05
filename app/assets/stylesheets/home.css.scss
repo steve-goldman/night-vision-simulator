@@ -1,0 +1,18 @@
+$body-bg-color:   #727892;
+$canvas-bg-color: #260656;
+$canvas-bd-color: #3D3E43;
+$bright-color:    #F2DF00;
+$dim-color:       #351465;
+$text-color:      $dim-color;
+
+body {
+  background-color: $body-bg-color;
+  color: $text-color;
+}
+
+#canvas {
+  border: 2px solid grey;
+  border-radius: 4px;
+  border-color: $canvas-bd-color;
+  background-color: $canvas-bg-color;
+}
