@@ -1,7 +1,8 @@
-= render partial: 'frequency_slider'
-= render partial: 'probability_slider'
-= render partial: 'duty_cycle_slider'
-= render partial: 'torch_count_slider'
+.row
+  .col-md-3
+    = render partial: "inputs"
+  .col-md-9
+    = render partial: 'canvas'
 
 :javascript
   new Initializer("Stu").initialize();
