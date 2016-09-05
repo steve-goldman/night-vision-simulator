@@ -3,36 +3,42 @@ class @Torch
   DIM           = "#351465"
   OFF           = "#260656"
 
-  constructor: (x, y, radius, context) ->
+  constructor: (x, y, radius, context, parameters) ->
     @x          = x
     @y          = y
     @radius     = radius
     @context    = context
+    @parameters = parameters
+    @isClosed   = false
 
   open: =>
     this._turnOff(DIM)
+    setTimeout this._startCycle, Math.random() * @parameters.frequency
 
   close: =>
     this._turnOff(OFF)
-
-  turnOn: =>
-    if !@isOn
-      this._turnOn()
-
-  turnOff: =>
-    if @isOn
-      this._turnOff(DIM)
+    @isClosed = true
 
   touches: (otherTorch) =>
     return this._distance(otherTorch) < @radius + otherTorch.radius
 
+  _startCycle: =>
+    if !@isClosed
+      isOn = Math.random() < @parameters.probability / 100.0
+      if isOn
+        this._turnOn()
+        setTimeout this._dutyCycle, @parameters.dutyCycle * @parameters.frequency / 100.0
+      setTimeout this._startCycle, @parameters.frequency
+
+  _dutyCycle: =>
+    if !@isClosed
+      this._turnOff(DIM)
+
   _turnOn: =>
     this._draw(@radius, BRIGHT, DIM)
-    @isOn = true
 
   _turnOff: (fillStyle) =>
     this._draw(@radius + 1, fillStyle)
-    @isOn = false
 
   _distance: (otherTorch) =>
     dx = otherTorch.x - @x
