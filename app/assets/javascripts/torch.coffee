@@ -19,9 +19,6 @@ class @Torch
     this._turnOff(OFF)
     @isClosed = true
 
-  touches: (otherTorch) =>
-    return this._distance(otherTorch) < @radius + otherTorch.radius
-
   _startCycle: =>
     if !@isClosed
       isOn = Math.random() < @parameters.probability / 100.0
@@ -40,16 +37,8 @@ class @Torch
   _turnOff: (fillStyle) =>
     this._draw(@radius + 1, fillStyle)
 
-  _distance: (otherTorch) =>
-    dx = otherTorch.x - @x
-    dy = otherTorch.y - @y
-    return Math.sqrt(dx * dx + dy * dy)
-
   _draw: (radius, fillStyle) =>
     @context.beginPath(radius)
     @context.arc @x, @y, radius, 0, 2 * Math.PI
     @context.fillStyle = fillStyle
     @context.fill()
-
-  _log: (message) =>
-    console.log(@x + "," + @y + ": " + message)
