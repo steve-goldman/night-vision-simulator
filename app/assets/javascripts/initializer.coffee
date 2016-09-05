@@ -10,4 +10,4 @@ class @Initializer
     new FrequencyWatcher(parameters.setFrequency)
     new ProbabilityWatcher(parameters.setProbability)
     new DutyCycleWatcher(parameters.setDutyCycle)
-    new TorchCountWatcher(torchManager.setTorchCount, 200)
+    new TorchCountWatcher(torchManager.setTorchCount)
