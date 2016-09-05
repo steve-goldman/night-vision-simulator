@@ -14,7 +14,6 @@ class @TorchManager
     this._startCycle()
 
   _startCycle: =>
-    console.log 'starting cycle with ' + @torches.length
     for torch in @torches
       this._possiblyTurnOnTorch torch
 
@@ -22,7 +21,6 @@ class @TorchManager
     setTimeout this._startCycle, @parameters.frequency
 
   _dutyCycle: =>
-    console.log 'duty cycle'
     for torch in @torches
       torch.turnOff()
 

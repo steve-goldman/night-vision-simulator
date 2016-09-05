@@ -10,4 +10,5 @@ class @ValidTorchBuilder
       if ++i > 1000
         return null
       torch = @torchBuilder.buildRandom()
+    torch.open()
     return torch
