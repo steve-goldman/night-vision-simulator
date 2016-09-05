@@ -14,5 +14,9 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require slider_watcher
+//= parameters
+//= require torch
+//= torch_builder
+//= require torch_manager
 //= require initializer
 //= require_tree .

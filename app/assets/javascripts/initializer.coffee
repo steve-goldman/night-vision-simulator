@@ -1,19 +1,14 @@
 class @Initializer
   initialize: =>
     console.log 'Initializer.initialize'
-    new FrequencyWatcher(this.onFrequency)
-    new ProbabilityWatcher(this.onProbability)
-    new DutyCycleWatcher(this.onDutyCycle)
-    new TorchCountWatcher(this.onTorchCount, 20)
-  
-  onFrequency: (frequency) =>
-    console.log("onFrequency: " + frequency)
+    @parameters   = new Parameters()
+    @torchBuilder = new TorchBuilder 640, 480, 10, @parameters
+    @torchManager = new TorchManager @torchBuilder
 
-  onProbability: (probability) =>
-    console.log("onProbability: " + probability)
-
-  onDutyCycle: (dutyCycle) =>
-    console.log("onDutyCycle: " + dutyCycle)
+    new FrequencyWatcher(@parameters.setFrequency)
+    new ProbabilityWatcher(@parameters.setProbability)
+    new DutyCycleWatcher(@parameters.setDutyCycle)
+    new TorchCountWatcher(@torchManager.setTorchCount, 20)
 
   onTorchCount: (torchCount) =>
     console.log("onTorchCount: " + torchCount)
