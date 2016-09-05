@@ -12,10 +12,7 @@ class @SliderWatcher
     this._updateListener()
 
   _updateLabel: =>
-    @label.html(@prefix + this._getValue())
+    @label.html(@prefix + @input.val())
     
   _updateListener: =>
-    @callback this._getValue()
-  
-  _getValue: =>
-    return @input.val()
+    @callback @input.val()

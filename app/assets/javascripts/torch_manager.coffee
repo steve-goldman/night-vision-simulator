@@ -1,16 +1,31 @@
 class @TorchManager
-  constructor: (torchBuilder) ->
+  constructor: (torchBuilder, parameters) ->
     @torches           = []
-    torchValidator     = new TorchValidator @torches
-    @validTorchBuilder = new ValidTorchBuilder torchBuilder, torchValidator
-    
+    @validTorchBuilder = new ValidTorchBuilder torchBuilder, new TorchValidator(@torches)
+    @parameters        = parameters
+
   setTorchCount: (torchCount) =>
     while @torches.length > torchCount
-      @torches.pop().stop()
+      @torches.pop().turnOff()
     while @torches.length < torchCount
-      @torches.push this._buildAndStartTorch()
+      @torches.push @validTorchBuilder.buildValid()
 
-  _buildAndStartTorch: =>
-    torch = @validTorchBuilder.buildValid()
-    torch.start()
-    return torch
+  start: =>
+    this._startCycle()
+
+  _startCycle: =>
+    console.log 'starting cycle'
+    for torch in @torches
+      this._possiblyTurnOnTorch torch
+
+    setTimeout this._dutyCycle,  @parameters.dutyCycle * @parameters.frequency / 100.0
+    setTimeout this._startCycle, @parameters.frequency
+
+  _dutyCycle: =>
+    console.log 'duty cycle'
+    for torch in @torches
+      torch.turnOff()
+
+  _possiblyTurnOnTorch: (torch) =>
+    if Math.random() < @parameters.probability / 100.0
+      torch.turnOn()

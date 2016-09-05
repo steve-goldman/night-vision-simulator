@@ -1,4 +1,4 @@
 class @Parameters
-  setFrequency:     (frequency) => @frequency = frequency
+  setFrequency:     (frequency) => @frequency   = frequency
   setProbability: (probability) => @probability = probability
-  setDutyCycle:     (dutyCycle) => @dutyCycle = dutyCycle
+  setDutyCycle:     (dutyCycle) => @dutyCycle   = dutyCycle
