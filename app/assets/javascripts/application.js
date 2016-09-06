@@ -22,4 +22,6 @@
 //= valid_torch_builder
 //= require torch_manager
 //= require initializer
+//= require publisher
+//= require control_initializer
 //= require_tree .
