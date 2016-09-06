@@ -22,6 +22,7 @@
 //= valid_torch_builder
 //= require torch_manager
 //= require initializer
+//= require message_logger
 //= require publisher
 //= require subscriber
 //= require torch_starter

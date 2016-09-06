@@ -18,6 +18,5 @@ class @TorchStarter
 
   _checkStartTorch: =>
     if !@started && @parameters.allValid()
-      console.log 'opening torch'
       @torch.open()
       @started = true;
