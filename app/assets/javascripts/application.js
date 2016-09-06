@@ -23,5 +23,8 @@
 //= require torch_manager
 //= require initializer
 //= require publisher
+//= require subscriber
+//= require torch_starter
 //= require control_initializer
+//= require torch_initializer
 //= require_tree .

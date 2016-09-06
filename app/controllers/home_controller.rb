@@ -6,4 +6,7 @@ class HomeController < ApplicationController
   def control
   end
 
+  def torch
+  end
+
 end

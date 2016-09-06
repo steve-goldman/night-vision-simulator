@@ -1,0 +1,9 @@
+.row
+  .col-md-3
+    %h3< Night Vision Torch
+    = render partial: 'torch'
+  .col-md-9
+    = render partial: 'canvas'
+
+:javascript
+  new TorchInitializer().initialize()
